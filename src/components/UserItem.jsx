@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const UserBlock = () => {
+const UserBlock = ({ sort }) => {
+  let sortting = sort ? 'user-list' : 'user-block';
+
   return (
-    <div class='user-block'>
+    <div className={sortting}>
       <svg width='120' height='120' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'>
         <path
           d='M32.8528 51.9849C36.7472 64.7547 46.7547 78.0226 60.2491 78.0226C73.7434 78.0226 83.7736 64.7547 87.6453 51.9849C90.9736 50.8302 93.7585 47.5019 94.8455 43.2C96.3399 37.2906 94.1434 31.8113 89.887 30.1585C90.2719 28.5962 90.4757 26.9887 90.4757 25.3358C90.4753 11.3208 76.5057 0 59.2753 0C42.0451 0 28.03 11.3434 28.03 25.3358C28.03 27.3283 28.347 29.2755 28.8677 31.1321C25.7885 33.4642 24.3847 38.1736 25.6526 43.2226C26.7396 47.5019 29.5243 50.8302 32.8528 51.9849ZM30.7696 35.7057C31.2224 34.9585 31.8111 34.4604 32.5583 34.2566C32.6941 34.234 32.8753 34.2113 33.0338 34.2113C33.1696 34.2113 33.2828 34.2113 33.4187 34.234L35.5696 34.4377L35.8866 32.3094C36.5432 27.8717 37.9243 23.8868 39.8715 20.4906C43.5168 24.5887 50.7621 27.3736 59.1168 27.3736C68.5583 27.3736 76.596 23.8189 79.562 18.8377C82.0526 22.5736 83.8187 27.1245 84.5882 32.3094L84.9052 34.4377L87.0562 34.234C87.3731 34.2113 87.6675 34.2113 87.9165 34.2566C88.075 34.2792 88.1658 34.3925 88.3241 34.4377C90.2715 35.2981 91.2675 38.717 90.43 42.1132C89.5694 45.5774 87.3052 47.6151 85.5168 47.8415L84.0222 48.0453L83.6147 49.4943C80.3545 61.4038 71.2979 73.4943 60.2033 73.4943C49.109 73.4943 40.0524 61.4264 36.8373 49.4943L36.4297 48.0453L34.9354 47.8415C33.1467 47.6151 30.8826 45.5321 30.0222 42.1132C29.4566 39.6679 29.7962 37.2 30.7696 35.7057Z'
@@ -13,14 +15,14 @@ const UserBlock = () => {
           fill='#BCBCBC'
         />
       </svg>
-      <h3 class='user-block__name'>Henry Baron</h3>
-      <h5 class='user-block__work'>Junior developer</h5>
-      <div class='user-block__skills'>
-        <div class='skill__item'>React</div>
-        <div class='skill__item'>React</div>
-        <div class='skill__item'>React</div>
+      <h3 className={sortting + '__name'}>Henry Baron</h3>
+      <h5 className={sortting + '__work'}>Junior developer</h5>
+      <div className={sortting + '__skills'}>
+        <div className='skill__item'>React</div>
+        <div className='skill__item'>React</div>
+        <div className='skill__item'>React</div>
       </div>
-      <div class='user-block__location'>
+      <div className={sortting + '__location'}>
         <svg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
           <g clip-path='url(#clip0)'>
             <path
@@ -36,8 +38,10 @@ const UserBlock = () => {
         </svg>
         <h3>London</h3>
       </div>
-      <button class='button button--edit'>Edit</button>
-      <button class='button button--delete'>Delete</button>
+      <div className={sortting + '__buttons'}>
+        <button className='button button--edit'>Edit</button>
+        <button className='button button--delete'>Delete</button>
+      </div>
     </div>
   );
 };

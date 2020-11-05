@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Header = () => {
+const Header = ({ sort, onClick }) => {
   return (
-    <div class='header'>
-      <div class='container'>
-        <div class='header__search'>
+    <div className='header'>
+      <div className='container'>
+        <div className='header__search'>
           <form>
-            <div class='form-search'>
-              <span class='form-icon'>
+            <div className='form-search'>
+              <span className='form-icon'>
                 <svg width='19' height='19' viewBox='0 0 19 19' fill='none' xmlns='http://www.w3.org/2000/svg'>
                   <path
                     d='M18.6148 16.758L14.5995 12.7422C15.5754 11.3848 16.112 9.76268 16.112 8.05523C16.112 5.9045 15.2747 3.88183 13.7517 2.36022C12.232 0.839278 10.208 0 8.05583 0C5.90437 0 3.88097 0.837308 2.35997 2.36022C0.83897 3.88051 0.000976562 5.90384 0.000976562 8.05523C0.000976562 10.2066 0.838314 12.2293 2.35997 13.7516C3.88097 15.2725 5.90371 16.1118 8.05583 16.1118C9.76268 16.1118 11.3835 15.5779 12.7423 14.5994L16.7576 18.6152C17.015 18.8719 17.3499 19 17.6862 19C18.0231 19 18.3587 18.8719 18.6148 18.6152C19.1277 18.1016 19.1277 17.2709 18.6148 16.758ZM4.21787 11.8937C3.19205 10.8679 2.62792 9.50394 2.62792 8.05458C2.62792 6.60521 3.19205 5.24253 4.21787 4.21675C5.24303 3.19096 6.60576 2.62619 8.05583 2.62619C9.5059 2.62619 10.8693 3.19096 11.8944 4.21675C12.9203 5.24253 13.4851 6.60587 13.4851 8.05523C13.4851 9.5046 12.9209 10.8679 11.8944 11.8944C10.8686 12.9202 9.50656 13.4836 8.05583 13.4836C6.6051 13.4836 5.24172 12.9188 4.21787 11.8937Z'
@@ -15,13 +15,20 @@ const Header = () => {
                   />
                 </svg>
               </span>
-              <input type='text' class='form-control' placeholder='Search user' />
+              <input type='text' className='form-control' placeholder='Search user' />
             </div>
-            <button class='button button--search'>Search</button>
+            <button className='button button--search'>Search</button>
           </form>
         </div>
-        <div class='header__sort'>
-          <svg id='active' width='27' height='27' viewBox='0 0 27 27' fill='none' xmlns='http://www.w3.org/2000/svg'>
+        <div className='header__sort'>
+          <svg
+            onClick={() => onClick(true)}
+            id={sort ? 'active' : null}
+            width='27'
+            height='27'
+            viewBox='0 0 27 27'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'>
             <g clip-path='url(#clip0)'>
               <path
                 d='M0 20.25V25.875C0 26.496 0.504 27 1.125 27H6.75C7.371 27 7.875 26.496 7.875 25.875V20.25C7.875 19.629 7.371 19.125 6.75 19.125H1.125C0.504 19.125 0 19.629 0 20.25Z'
@@ -54,7 +61,14 @@ const Header = () => {
               </clipPath>
             </defs>
           </svg>
-          <svg width='27' height='27' viewBox='0 0 27 27' fill='none' xmlns='http://www.w3.org/2000/svg'>
+          <svg
+            onClick={() => onClick(false)}
+            id={sort ? null : 'active'}
+            width='27'
+            height='27'
+            viewBox='0 0 27 27'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'>
             <g clip-path='url(#clip0)'>
               <path
                 d='M11.4231 0H1.03847C0.464919 0 0 0.464919 0 1.03847V11.4231C0 11.9967 0.464919 12.4616 1.03847 12.4616H11.4231C11.9967 12.4616 12.4616 11.9967 12.4616 11.4231V1.03847C12.4616 0.464919 11.9967 0 11.4231 0Z'
@@ -80,7 +94,7 @@ const Header = () => {
             </defs>
           </svg>
         </div>
-        <button class='button button--add'>Add</button>
+        <button className='button button--add'>Add</button>
       </div>
     </div>
   );

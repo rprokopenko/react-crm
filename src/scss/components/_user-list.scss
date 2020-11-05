@@ -10,6 +10,11 @@
   border-radius: 8px;
   margin-bottom: 25px;
 
+  svg {
+    width: 47px;
+    height: 47px;
+  }
+
   &__name {
     font-weight: 500;
     font-size: 30px;
@@ -41,6 +46,11 @@
     align-items: center;
     justify-content: center;
 
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+
     h3 {
       font-weight: 500;
       font-size: 16px;
@@ -50,10 +60,34 @@
   }
 
   &__buttons {
-    margin-left: 200px;
+    margin-left: 10%;
   }
 }
 
 .user-list:last-child {
   margin-bottom: 0;
+}
+
+@media screen and (max-width: 1230px) {
+  .user-list {
+    &__name {
+      font-size: 15px;
+    }
+
+    &__work {
+      font-size: 9px;
+    }
+
+    &__skills {
+      div {
+        font-size: 9px;
+      }
+    }
+
+    &__location {
+      h3 {
+        font-size: 9px;
+      }
+    }
+  }
 }

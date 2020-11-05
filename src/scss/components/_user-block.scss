@@ -1,79 +1,75 @@
 @import '../variables';
 
-.user-block{
-    width:344px;
-    min-width: 180px;
-    text-align: center;
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 41px 48px;
-    margin:0 auto 24px auto;
-    
+.user-block {
+  width: 344px;
+  min-width: 180px;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 41px 48px;
+  margin: 0 auto 24px auto;
 
-    &__name{
-        font-weight: 500;
-        font-size: 30px;
-        color: #000000;
-        margin-top: 35px;
+  &__name {
+    font-weight: 500;
+    font-size: 30px;
+    color: #000000;
+    margin-top: 35px;
+  }
+
+  &__work {
+    font-weight: 400;
+    font-size: 18px;
+    color: #a4a4a4;
+    margin-top: 4px;
+  }
+
+  &__skills {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+
+    .skill__item {
+      font-weight: normal;
+      font-size: 16px;
+      color: #737373;
+      background: rgba(227, 228, 228, 0.26);
+      padding: 4px 6px;
+      margin: 0 8px;
+    }
+  }
+
+  &__location {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 17px;
+    h3 {
+      font-weight: 500;
+      font-size: 16px;
+      color: rgba(133, 133, 133, 0.71);
+      margin-left: 4px;
+    }
+  }
+
+  @media screen and (max-width: 465px) {
+    padding: 20px 5px;
+    &__name {
+      font-size: 18px;
     }
 
-    &__work{
-        font-weight: 400;
-        font-size: 18px;
-        color: #A4A4A4;
-        margin-top: 4px;
+    &__work {
+      font-size: 13px;
     }
 
-    &__skills{
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-
-        .skill__item{
-            font-weight: normal;
-            font-size: 16px;
-            color: #737373;
-            background: rgba(227, 228, 228, 0.26);
-            padding: 4px 6px;
-            margin: 0 8px
-        }
+    .skill__item {
+      font-size: 13px;
     }
 
-    &__location{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 10px;
-        h3{
-            font-weight: 500;
-            font-size: 16px;
-            color: rgba(133, 133, 133, 0.71);
-            margin-left: 4px ;
-        }
+    &__location {
+      h3 {
+        font-size: 13px;
+      }
     }
-
-
-
-    @media screen and (max-width: 465px) {
-        padding: 20px 5px;
-        &__name{
-            font-size: 18px;
-        }
-
-        &__work{
-            font-size: 13px;
-        }
-
-        .skill__item{
-            font-size: 13px;
-        }
-
-        &__location{
-            h3{
-                font-size: 13px;
-            }
-        }
-    }
-
-
+  }
 }
