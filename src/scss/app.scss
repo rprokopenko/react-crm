@@ -1,0 +1,35 @@
+@import 'variables';
+@import 'fonts';
+@import 'libs/normalize';
+
+@import 'components/all';
+
+body {
+  background-color: #fff;
+}
+
+.wrapper {
+  width: calc(100vw - 100px);
+  height: 100%;
+  background-color: $background;
+  margin: 50px auto;
+  border-radius: 10px;
+  max-width: 1600px;
+}
+
+.container {
+  width: $container-width;
+  margin: 0 auto;
+}
+
+.content {
+  padding: 65px 0 70px 0;
+
+  &__items {
+    display: flex;
+
+    &--block {
+      flex-wrap: wrap;
+    }
+  }
+}

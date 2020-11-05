@@ -1,0 +1,118 @@
+@import '../variables';
+
+.header{
+    .container{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 70px;
+    }
+
+
+    &__search{
+        flex: 1;
+        form{
+            display: flex;
+            .form-search  {
+                width: 100%;
+                max-width: 717px;
+                min-width: 250px;
+                margin-right: 19px;
+                .form-control{
+                    width: 100%;
+                    height: 48px;
+                    background: #FFFFFF;
+                    border: 2px solid #DEDEDE;
+                    font-weight: 400;
+                    font-size: 22px;
+                    color: #ACACAC;
+                    padding-left: 2.375rem;
+                    &::placeholder{
+                        color: #E3E4E4;
+                    }
+    
+                    &:focus{
+                        border: 2px solid #118BF7;    
+                    }
+                }
+
+                .form-icon {
+                    position: absolute;
+                    z-index: 2;
+                    display: block;
+                    width: 2.375rem;
+                    height: 2.375rem;
+                    line-height: 57px;
+                    text-align: center;
+                    pointer-events: none;
+                }
+                
+            }
+        }
+    }
+
+
+
+
+    &__sort{
+        margin: 0 25px;
+
+        svg:first-child{
+            margin-right: 12px;
+        }
+
+        svg:hover{
+            path{
+                fill: #118BF7;
+            }
+            cursor: pointer;
+        }
+
+        #active{
+            path{
+                fill: #118BF7;
+            } 
+        }
+        
+    }
+
+    @media screen and (max-width: 845px) {
+        .container {
+            flex-direction: column;
+        }
+
+        &__sort{
+            margin-top: 20px;
+        }
+        
+    }
+
+
+    @media screen and (max-width: 555px) {
+        .container{
+            flex-direction: column;
+        }
+
+        form{
+            flex-wrap: wrap;
+            .form-search{
+                min-width: 100%;
+                margin: 0;
+                .form-search{
+                    margin-right: 0;
+                }
+            }
+        }        
+    }
+
+
+}
+
+
+
+
+
+
+
+

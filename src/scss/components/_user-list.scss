@@ -1,0 +1,59 @@
+@import '../variables';
+
+.user-list {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 18px 33px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+
+  &__name {
+    font-weight: 500;
+    font-size: 30px;
+    color: #000000;
+  }
+
+  &__work {
+    font-weight: 400;
+    font-size: 18px;
+    color: #a4a4a4;
+  }
+
+  &__skills {
+    display: flex;
+    justify-content: center;
+
+    div {
+      font-weight: normal;
+      font-size: 16px;
+      color: #737373;
+      background: rgba(227, 228, 228, 0.26);
+      padding: 4px 6px;
+      margin: 0 8px;
+    }
+  }
+
+  &__location {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h3 {
+      font-weight: 500;
+      font-size: 16px;
+      color: rgba(133, 133, 133, 0.71);
+      margin-left: 4px;
+    }
+  }
+
+  &__buttons {
+    margin-left: 200px;
+  }
+}
+
+.user-list:last-child {
+  margin-bottom: 0;
+}
