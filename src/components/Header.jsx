@@ -1,6 +1,17 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-const Header = ({ sort, onClick }) => {
+import { setSort } from '../redux/actions/sort';
+
+const Header = () => {
+  const dispatch = useDispatch();
+
+  const { sortType } = useSelector(({ sort }) => sort);
+
+  const onSelectSortType = React.useCallback((type) => {
+    dispatch(setSort(type));
+  }, []);
+
   return (
     <div className='header'>
       <div className='container'>
@@ -22,14 +33,14 @@ const Header = ({ sort, onClick }) => {
         </div>
         <div className='header__sort'>
           <svg
-            onClick={() => onClick(true)}
-            id={sort ? 'active' : null}
+            onClick={() => onSelectSortType(true)}
+            id={sortType ? 'active' : null}
             width='27'
             height='27'
             viewBox='0 0 27 27'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'>
-            <g clip-path='url(#clip0)'>
+            <g clipPath='url(#clip0)'>
               <path
                 d='M0 20.25V25.875C0 26.496 0.504 27 1.125 27H6.75C7.371 27 7.875 26.496 7.875 25.875V20.25C7.875 19.629 7.371 19.125 6.75 19.125H1.125C0.504 19.125 0 19.629 0 20.25Z'
                 fill='#DEDEDE'
@@ -62,14 +73,14 @@ const Header = ({ sort, onClick }) => {
             </defs>
           </svg>
           <svg
-            onClick={() => onClick(false)}
-            id={sort ? null : 'active'}
+            onClick={() => onSelectSortType(false)}
+            id={sortType ? null : 'active'}
             width='27'
             height='27'
             viewBox='0 0 27 27'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'>
-            <g clip-path='url(#clip0)'>
+            <g clipPath='url(#clip0)'>
               <path
                 d='M11.4231 0H1.03847C0.464919 0 0 0.464919 0 1.03847V11.4231C0 11.9967 0.464919 12.4616 1.03847 12.4616H11.4231C11.9967 12.4616 12.4616 11.9967 12.4616 11.4231V1.03847C12.4616 0.464919 11.9967 0 11.4231 0Z'
                 fill='#DEDEDE'

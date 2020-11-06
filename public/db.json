@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "name": "John Smith",
+      "profession": "UI designer",
+      "skills": ["Figma", "Photoshop"],
+      "location": "Paris"
+    },
+    {
+      "id": 1,
+      "name": "Anna Hope",
+      "profession": "Java developer",
+      "skills": ["Java", "Python", "Figma"],
+      "location": "London"
+    },
+    {
+      "id": 2,
+      "name": "Karlson Merge",
+      "profession": "Python developer",
+      "skills": ["Python", "Photoshop", "JavaScript"],
+      "location": "Berlin"
+    },
+    {
+      "id": 3,
+      "name": "Kate Smith",
+      "profession": "UI designer",
+      "skills": ["Figma", "Photoshop"],
+      "location": "Paris"
+    },
+    {
+      "id": 4,
+      "name": "Ben Still",
+      "profession": "Frontend developer",
+      "skills": ["React", "Figma", "SCSS"],
+      "location": "London"
+    }
+  ]
+}

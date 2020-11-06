@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
-const UserBlock = ({ sort }) => {
-  let sortting = sort ? 'user-list' : 'user-block';
+const UserBlock = () => {
+  const { sortType } = useSelector(({ sort }) => sort);
+
+  let sortting = sortType ? 'user-list' : 'user-block';
 
   return (
     <div className={sortting}>
@@ -24,7 +27,7 @@ const UserBlock = ({ sort }) => {
       </div>
       <div className={sortting + '__location'}>
         <svg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
-          <g clip-path='url(#clip0)'>
+          <g clipPath='url(#clip0)'>
             <path
               d='M5.49323 8.85558L5.26165 12.1129C5.59298 12.1129 5.73648 11.9706 5.90857 11.7997L7.46198 10.3151L10.6808 12.6723C11.2711 13.0013 11.6871 12.8281 11.8463 12.1292L13.9592 2.22891L13.9597 2.22833C14.147 1.35566 13.6441 1.01441 13.069 1.2285L0.649815 5.98325C-0.197768 6.31225 -0.184935 6.78475 0.505732 6.99883L3.68082 7.98641L11.0559 3.37166C11.403 3.14183 11.7186 3.269 11.459 3.49883L5.49323 8.85558Z'
               fill='#CDCDCD'
