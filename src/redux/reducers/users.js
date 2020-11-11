@@ -1,8 +1,9 @@
-import { SET_USERS, SET_LOADED } from '../types';
+import { SET_USERS, SET_LOADED, SET_SEARCH } from '../types';
 
 const initialState = {
   items: [],
   isLoaded: false,
+  filterName: '',
 };
 
 const users = (state = initialState, action) => {
@@ -12,6 +13,11 @@ const users = (state = initialState, action) => {
         ...state,
         items: action.payload,
         isLoaded: true,
+      };
+    case SET_SEARCH:
+      return {
+        ...state,
+        filterName: action.payload,
       };
     case SET_LOADED:
       return {

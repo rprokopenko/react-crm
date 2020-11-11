@@ -10,6 +10,9 @@ const Content = () => {
 
   const items = useSelector(({ users }) => users.items);
   const isLoaded = useSelector(({ users }) => users.isLoaded);
+  const filterName = useSelector(({ users }) => users.filterName);
+
+  const filterItems = items.filter((item) => item.name.toLowerCase().includes(filterName.toLowerCase()));
 
   React.useEffect(() => {
     dispatch(fetchUsers());
@@ -20,9 +23,9 @@ const Content = () => {
       <div className='container'>
         <div className='content__items content__items--block content__items--list'>
           {isLoaded ? (
-            items.map((obj) => <UserItem key={obj.id} {...obj} />)
+            filterItems.map((obj) => <UserItem key={obj.id} {...obj} />)
           ) : (
-            <div class='lds-facebook'>
+            <div className='lds-facebook'>
               <div></div>
               <div></div>
               <div></div>

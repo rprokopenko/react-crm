@@ -2,21 +2,28 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { setSort } from '../redux/actions/sort';
+import { setSearch } from '../redux/actions/users';
 
 const Header = () => {
   const dispatch = useDispatch();
 
   const { sortType } = useSelector(({ sort }) => sort);
+  const filter = useSelector(({ users }) => users.filterName);
 
   const onSelectSortType = React.useCallback((type) => {
     dispatch(setSort(type));
   }, []);
 
+  const handleChange = (e) => {
+    dispatch(setSearch(e.target.value));
+  };
+
+  console.log(filter);
   return (
     <div className='header'>
       <div className='container'>
         <div className='header__search'>
-          <form>
+          <div className='form'>
             <div className='form-search'>
               <span className='form-icon'>
                 <svg width='19' height='19' viewBox='0 0 19 19' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -26,10 +33,12 @@ const Header = () => {
                   />
                 </svg>
               </span>
-              <input type='text' className='form-control' placeholder='Search user' />
+              <input type='text' className='form-control' placeholder='Search user' onChange={handleChange} />
             </div>
-            <button className='button button--search'>Search</button>
-          </form>
+            <button className='button button--search' type='submit'>
+              Search
+            </button>
+          </div>
         </div>
         <div className='header__sort'>
           <svg
