@@ -1,9 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-const UserBlock = () => {
+const UserBlock = ({ id, name, profession, skills, location }) => {
   const { sortType } = useSelector(({ sort }) => sort);
-
   let sortting = sortType ? 'user-list' : 'user-block';
 
   return (
@@ -18,12 +17,14 @@ const UserBlock = () => {
           fill='#BCBCBC'
         />
       </svg>
-      <h3 className={sortting + '__name'}>Henry Baron</h3>
-      <h5 className={sortting + '__work'}>Junior developer</h5>
+      <h3 className={sortting + '__name'}>{name}</h3>
+      <h5 className={sortting + '__work'}>{profession}</h5>
       <div className={sortting + '__skills'}>
-        <div className='skill__item'>React</div>
-        <div className='skill__item'>React</div>
-        <div className='skill__item'>React</div>
+        {skills.map((item) => (
+          <div key={item} className='skill__item'>
+            {item}
+          </div>
+        ))}
       </div>
       <div className={sortting + '__location'}>
         <svg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -39,7 +40,7 @@ const UserBlock = () => {
             </clipPath>
           </defs>
         </svg>
-        <h3>London</h3>
+        <h3>{location}</h3>
       </div>
       <div className={sortting + '__buttons'}>
         <button className='button button--edit'>Edit</button>

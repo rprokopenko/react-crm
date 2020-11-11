@@ -1,28 +1,33 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
 
-import { setUsers } from '../redux/actions/users';
+import { fetchUsers } from '../redux/actions/users';
+
 import UserItem from './UserItem';
 
 const Content = () => {
   const dispatch = useDispatch();
 
+  const items = useSelector(({ users }) => users.items);
+  const isLoaded = useSelector(({ users }) => users.isLoaded);
+
   React.useEffect(() => {
-    axios.get('/users').then(({ data }) => {
-      dispatch(setUsers(data));
-      console.log(data);
-    });
+    dispatch(fetchUsers());
   }, []);
 
-  //const { items } = useSelector(({ users }) => users);
-
-  //console.log(items);
   return (
     <div className='content'>
       <div className='container'>
         <div className='content__items content__items--block content__items--list'>
-          {/*items && items.map((obj) => <UserItem />)*/}
+          {isLoaded ? (
+            items.map((obj) => <UserItem key={obj.id} {...obj} />)
+          ) : (
+            <div class='lds-facebook'>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          )}
         </div>
       </div>
     </div>
