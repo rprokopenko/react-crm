@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { setOpen } from '../redux/actions/modal';
 import { setSort } from '../redux/actions/sort';
 import { setSearch } from '../redux/actions/users';
 
@@ -8,17 +9,20 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const { sortType } = useSelector(({ sort }) => sort);
-  const filter = useSelector(({ users }) => users.filterName);
+  const openType = useSelector(({ modal }) => modal.openType);
 
   const onSelectSortType = React.useCallback((type) => {
     dispatch(setSort(type));
+  }, []);
+
+  const onSelectOpenType = React.useCallback((type) => {
+    dispatch(setOpen(type));
   }, []);
 
   const handleChange = (e) => {
     dispatch(setSearch(e.target.value));
   };
 
-  console.log(filter);
   return (
     <div className='header'>
       <div className='container'>
@@ -42,7 +46,7 @@ const Header = () => {
         </div>
         <div className='header__sort'>
           <svg
-            onClick={() => onSelectSortType(true)}
+            onClick={() => onSelectSortType(!openType)}
             id={sortType ? 'active' : null}
             width='27'
             height='27'
@@ -114,7 +118,9 @@ const Header = () => {
             </defs>
           </svg>
         </div>
-        <button className='button button--add'>Add</button>
+        <button onClick={() => onSelectOpenType(!openType)} className='button button--add'>
+          Add
+        </button>
       </div>
     </div>
   );
