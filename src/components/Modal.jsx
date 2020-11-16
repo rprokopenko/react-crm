@@ -2,15 +2,21 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { setOpen } from '../redux/actions/modal';
+import { addUser } from '../redux/actions/users';
 
 const Modal = () => {
   const dispatch = useDispatch();
 
   const openType = useSelector(({ modal }) => modal.openType);
+  const obj = useSelector(({ users }) => users.addUser);
 
   const onSelectOpenType = React.useCallback((type) => {
     dispatch(setOpen(type));
   }, []);
+
+  const add = (obj) => {
+    dispatch(addUser(obj));
+  };
 
   return (
     <div className='modal'>
@@ -39,7 +45,7 @@ const Modal = () => {
         </div>
         <div className='modal-window__content'>
           <form className='modal-form'>
-            <input placeholder='Name and Surname' type='text' />
+            <input placeholder='Name and Surname' type='text' value={obj.name} />
             <input placeholder='Profession' type='text' />
             <input placeholder='Skills' type='text' />
             <input placeholder='Location' type='text' />
@@ -48,7 +54,9 @@ const Modal = () => {
               <button onClick={() => onSelectOpenType(!openType)} className='button button--cancel-modal'>
                 Cancel
               </button>
-              <button className='button button--add-modal'>Add</button>
+              <button className='button button--add-modal' type='button'>
+                Add
+              </button>
             </div>
           </form>
         </div>
