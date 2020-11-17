@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { SET_USERS, SET_LOADED, SET_SEARCH, ADD_USER } from '../types';
+import { SET_USERS, SET_LOADED, SET_SEARCH } from '../types';
 
 export const setLoaded = (payload) => ({
   type: SET_LOADED,
@@ -26,9 +26,4 @@ export const setUsers = (items) => ({
 export const setSearch = (filterName) => ({
   type: SET_SEARCH,
   payload: filterName,
-});
-
-export const addUser = (obj) => ({
-  type: ADD_USER,
-  payload: obj,
 });

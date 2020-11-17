@@ -1,22 +1,30 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
+import Multiselect from 'react-widgets/lib/Multiselect';
+import 'react-widgets/dist/css/react-widgets.css';
 
 import { setOpen } from '../redux/actions/modal';
-import { addUser } from '../redux/actions/users';
 
-const Modal = () => {
+let Modal = (props) => {
   const dispatch = useDispatch();
 
   const openType = useSelector(({ modal }) => modal.openType);
-  const obj = useSelector(({ users }) => users.addUser);
 
   const onSelectOpenType = React.useCallback((type) => {
     dispatch(setOpen(type));
   }, []);
 
-  const add = (obj) => {
-    dispatch(addUser(obj));
-  };
+  const { handleSubmit } = props;
+
+  const renderMultiselect = ({ input, ...rest }) => (
+    <Multiselect
+      {...input}
+      onBlur={() => input.onBlur()}
+      value={input.value || []} // requires value to be an array
+      {...rest}
+    />
+  );
 
   return (
     <div className='modal'>
@@ -44,17 +52,17 @@ const Modal = () => {
           </svg>
         </div>
         <div className='modal-window__content'>
-          <form className='modal-form'>
-            <input placeholder='Name and Surname' type='text' value={obj.name} />
-            <input placeholder='Profession' type='text' />
-            <input placeholder='Skills' type='text' />
-            <input placeholder='Location' type='text' />
+          <form onSubmit={handleSubmit} className='modal-form'>
+            <Field name='name' component='input' placeholder='Name and Surname' type='text' />
+            <Field name='profession' component='input' placeholder='Profession' type='text' />
+            <Field name='skills' component={renderMultiselect} placeholder='Skills' type='text' data={['Guitar', 'Cycling', 'Hiking']} />
+            <Field name='location' component='input' placeholder='Location' type='text' />
 
             <div className='modal-form__buttons'>
               <button onClick={() => onSelectOpenType(!openType)} className='button button--cancel-modal'>
                 Cancel
               </button>
-              <button className='button button--add-modal' type='button'>
+              <button className='button button--add-modal' type='submit'>
                 Add
               </button>
             </div>
@@ -64,5 +72,10 @@ const Modal = () => {
     </div>
   );
 };
+
+Modal = reduxForm({
+  // a unique name for the form
+  form: 'contact',
+})(Modal);
 
 export default Modal;
