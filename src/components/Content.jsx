@@ -13,7 +13,7 @@ const Content = () => {
   const filterName = useSelector(({ users }) => users.filterName);
 
   const filterItems = items.filter((item) => item.name.toLowerCase().includes(filterName.toLowerCase()));
-
+  console.log(filterItems);
   React.useEffect(() => {
     dispatch(fetchUsers());
   }, []);
@@ -23,7 +23,11 @@ const Content = () => {
       <div className='container'>
         <div className='content__items content__items--block content__items--list'>
           {isLoaded ? (
-            filterItems.map((obj) => <UserItem key={obj.id} {...obj} />)
+            filterItems.length === 0 ? (
+              <h2>No results...</h2>
+            ) : (
+              filterItems.map((obj) => <UserItem key={obj.id} {...obj} />)
+            )
           ) : (
             <div className='lds-facebook'>
               <div></div>

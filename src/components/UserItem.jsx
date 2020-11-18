@@ -1,9 +1,17 @@
 import React from 'react';
+import axios from 'axios';
 import { useSelector } from 'react-redux';
 
 const UserBlock = ({ id, name, profession, skills, location }) => {
   const { sortType } = useSelector(({ sort }) => sort);
   let sortting = sortType ? 'user-list' : 'user-block';
+
+  const deleteUser = (id) => {
+    axios({
+      method: 'DELETE',
+      url: 'http://localhost:3001/users/' + id,
+    });
+  };
 
   return (
     <div className={sortting}>
@@ -20,11 +28,12 @@ const UserBlock = ({ id, name, profession, skills, location }) => {
       <h3 className={sortting + '__name'}>{name}</h3>
       <h5 className={sortting + '__work'}>{profession}</h5>
       <div className={sortting + '__skills'}>
-        {skills.map((item) => (
-          <div key={item} className='skill__item'>
-            {item}
-          </div>
-        ))}
+        {skills &&
+          skills.map((item) => (
+            <div key={item} className='skill__item'>
+              {item}
+            </div>
+          ))}
       </div>
       <div className={sortting + '__location'}>
         <svg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -44,7 +53,9 @@ const UserBlock = ({ id, name, profession, skills, location }) => {
       </div>
       <div className={sortting + '__buttons'}>
         <button className='button button--edit'>Edit</button>
-        <button className='button button--delete'>Delete</button>
+        <button className='button button--delete' onClick={() => deleteUser(id)}>
+          Delete
+        </button>
       </div>
     </div>
   );

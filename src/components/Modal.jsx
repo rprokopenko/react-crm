@@ -1,10 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import Multiselect from 'react-widgets/lib/Multiselect';
-import 'react-widgets/dist/css/react-widgets.css';
 
 import { setOpen } from '../redux/actions/modal';
+import Multiselect from 'react-widgets/lib/Multiselect';
+
+import 'react-widgets/dist/css/react-widgets.css';
 
 let Modal = (props) => {
   const dispatch = useDispatch();
@@ -17,12 +18,17 @@ let Modal = (props) => {
 
   const { handleSubmit } = props;
 
-  const renderMultiselect = ({ input, ...rest }) => (
+  const renderMultiselect = ({ input, data, valueField, textField }) => (
     <Multiselect
       {...input}
       onBlur={() => input.onBlur()}
+      allowCreate={true}
       value={input.value || []} // requires value to be an array
-      {...rest}
+      data={data}
+      valueField={valueField}
+      textField={textField}
+      onCreate={(name) => data.push(name)}
+      placeholder='Skills'
     />
   );
 
@@ -53,11 +59,10 @@ let Modal = (props) => {
         </div>
         <div className='modal-window__content'>
           <form onSubmit={handleSubmit} className='modal-form'>
-            <Field name='name' component='input' placeholder='Name and Surname' type='text' />
-            <Field name='profession' component='input' placeholder='Profession' type='text' />
-            <Field name='skills' component={renderMultiselect} placeholder='Skills' type='text' data={['Guitar', 'Cycling', 'Hiking']} />
-            <Field name='location' component='input' placeholder='Location' type='text' />
-
+            <Field className='input' name='name' component='input' placeholder='Name and Surname' type='text' />
+            <Field className='input' name='profession' component='input' placeholder='Profession' type='text' />
+            <Field name='skills' component={renderMultiselect} data={['Guitar', 'Cycling', 'Hiking']} type='text' />
+            <Field className='input' name='location' component='input' placeholder='Location' type='text' />
             <div className='modal-form__buttons'>
               <button onClick={() => onSelectOpenType(!openType)} className='button button--cancel-modal'>
                 Cancel

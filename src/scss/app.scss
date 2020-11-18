@@ -27,6 +27,9 @@ body {
 
   &__items {
     display: flex;
+    h2 {
+      color: #acacac;
+    }
 
     &--block {
       flex-wrap: wrap;

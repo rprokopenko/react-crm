@@ -50,7 +50,7 @@
         display: flex;
         flex-direction: column;
 
-        input {
+        .input {
           height: 65px;
           width: 100%;
           max-width: 500px;
@@ -66,16 +66,82 @@
           font-weight: 500;
         }
 
-        input::placeholder {
+        .input::placeholder {
           color: #c5c5c6;
         }
 
-        input:focus {
+        .input:focus {
           border: 2px solid #bcbcbc;
         }
 
-        input:first-child {
+        .input:first-child {
           margin-top: 20px;
+        }
+
+        .input:nth-child(4) {
+          margin-top: 32px;
+        }
+
+        .rw-widget-container {
+          height: 65px;
+          width: 100%;
+          max-width: 500px;
+
+          background: #f3f5f6;
+          border: none;
+          border-bottom: 1px solid #bcbcbc;
+
+          border-radius: 0;
+
+          padding: 15px;
+          font-weight: 500;
+          color: #c5c5c6;
+          font-size: 22px;
+
+          input {
+            padding: 0;
+          }
+        }
+
+        .rw-widget-container:focus {
+          border: 2px solid #bcbcbc;
+        }
+
+        .rw-widget-input,
+        .rw-filter-input {
+          box-shadow: none;
+        }
+
+        .rw-multiselect .rw-input-reset::placeholder {
+          height: 100%;
+          padding: 0;
+          font-weight: 500;
+          color: #c5c5c6;
+        }
+
+        .rw-multiselect-tag {
+          display: inline-table;
+          border: 0;
+          margin-right: 10px;
+          margin-top: 0;
+          height: 100%;
+          background-color: #e5e5e5;
+        }
+
+        span {
+          color: #a0a0a0;
+        }
+
+        .rw-popup-container {
+          position: absolute;
+          z-index: 1005;
+          top: 100%;
+          left: -6px;
+          right: -2px;
+        }
+
+        .rw-popup {
+          border: 0;
         }
 
         &__buttons {
