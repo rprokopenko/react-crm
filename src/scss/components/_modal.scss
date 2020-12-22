@@ -103,13 +103,18 @@
           }
         }
 
-        .rw-widget-container:focus {
+        .rw-open {
           border: 2px solid #bcbcbc;
+          border-bottom: 0;
         }
 
         .rw-widget-input,
         .rw-filter-input {
           box-shadow: none;
+        }
+
+        .rw-multiselect .rw-input-reset {
+          height: 100%;
         }
 
         .rw-multiselect .rw-input-reset::placeholder {

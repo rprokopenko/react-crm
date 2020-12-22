@@ -7,10 +7,13 @@ const UserBlock = ({ id, name, profession, skills, location }) => {
   let sortting = sortType ? 'user-list' : 'user-block';
 
   const deleteUser = (id) => {
-    axios({
-      method: 'DELETE',
-      url: 'http://localhost:3001/users/' + id,
-    });
+    if (window.confirm('Are you sure you want to delete this user?')) {
+      axios({
+        method: 'DELETE',
+        url: 'http://localhost:3001/users/' + id,
+      });
+    } else {
+    }
   };
 
   return (

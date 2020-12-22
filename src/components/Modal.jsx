@@ -59,9 +59,9 @@ let Modal = (props) => {
         </div>
         <div className='modal-window__content'>
           <form onSubmit={handleSubmit} className='modal-form'>
-            <Field className='input' name='name' component='input' placeholder='Name and Surname' type='text' />
+            <Field className='input' name='name' component='input' placeholder='Name and Surname' type='text' valueField='Shoot' />
             <Field className='input' name='profession' component='input' placeholder='Profession' type='text' />
-            <Field name='skills' component={renderMultiselect} data={['Guitar', 'Cycling', 'Hiking']} type='text' />
+            <Field name='skills' component={renderMultiselect} data={['Figma', 'React', 'Python']} type='text' />
             <Field className='input' name='location' component='input' placeholder='Location' type='text' />
             <div className='modal-form__buttons'>
               <button onClick={() => onSelectOpenType(!openType)} className='button button--cancel-modal'>

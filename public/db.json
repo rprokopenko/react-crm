@@ -54,14 +54,15 @@
       "location": "London"
     },
     {
-      "name": "Henry",
-      "profession": "Logist",
+      "name": "Roman",
+      "profession": "Peterson",
       "skills": [
-        "Guitar",
-        "Hiking"
+        "Figma",
+        "C++",
+        "React"
       ],
-      "location": "Paris",
-      "id": 6
+      "location": "Opole",
+      "id": 5
     }
   ]
 }
